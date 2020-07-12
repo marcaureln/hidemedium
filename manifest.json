@@ -1,0 +1,26 @@
+{
+	"manifest_version": 2,
+	"name": "Hide Medium",
+	"version": "0.1",
+	"description": "Hides starred articles on Medium.",
+	"homepage_url": "https://github.com/marcaureln/",
+	"icons": {
+		"48": "icons/icon.svg",
+		"96": "icons/icon.svg"
+	},
+	"browser_action": {
+		"default_icon": "icons/icon.svg",
+		"default_title": "Hide Medium",
+		"default_popup": "popup/index.html"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"*://*.medium.com/*"
+			],
+			"js": [
+				"content_scripts/app.js"
+			]
+		}
+	]
+}

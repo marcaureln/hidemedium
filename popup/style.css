@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap");
+
+html,
+body {
+    margin: 0;
+    width: 200px;
+}
+
+#number {
+    font: 2rem "Fira Sans", sans-serif;
+}
+
+p,
+label {
+    font: 1rem "Fira Sans", sans-serif;
+}
