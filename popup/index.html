@@ -10,20 +10,28 @@
             <span id="number">0</span>
         </div>
 
-        <div>
+        <div class="container">
             <label for="hide">Hide</label>
             <input type="radio" name="effect" id="hide" value="hide" checked />
         </div>
 
-        <div>
+        <div class="container">
             <label for="blur">Blur</label>
             <input type="radio" name="effect" id="blur" value="blur" />
         </div>
 
-        <div>
-            <label for="gif">Replace by GIF</label>
-            <input type="radio" name="effect" id="gif" value="gif" />
+        <div class="container">
+            <label for="gif">Replace by GIF*</label>
+            <input type="radio" name="effect" id="gif" value="gif" disabled />
         </div>
+
+        <p class="ps">* feature in development</p>
+
+        <footer>
+            <a href="https://github.com/marcaureln">
+                <img src="github.png" alt="GitHub Logo" />
+            </a>
+        </footer>
 
         <script src="actions.js"></script>
     </body>
