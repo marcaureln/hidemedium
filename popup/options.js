@@ -21,7 +21,7 @@ let Options = {
 	},
 };
 
-function sendOptions() {
+function getOptions() {
 	return {
 		show: Options.show,
 		hide: Options.hide,
@@ -38,14 +38,16 @@ function updateCounter(number) {
 	});
 }
 
-document.onload = updateCounter();
+document.onload = () => {
+	updateCounter();
+};
 
 document.addEventListener('click', () => {
 	let radios = document.getElementsByTagName('input');
 	for (let i = 0; i < radios.length; i++) {
-		const element = radios[i];
-		if (element.checked) {
-			switch (element.value) {
+		const radio = radios[i];
+		if (radio.checked) {
+			switch (radio.value) {
 				case 'show':
 					Options.setShow();
 					break;
