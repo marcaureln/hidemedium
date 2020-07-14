@@ -38,9 +38,7 @@ function updateCounter(number) {
 	});
 }
 
-document.onload = () => {
-	updateCounter();
-};
+document.onload = updateCounter();
 
 document.addEventListener('click', () => {
 	let radios = document.getElementsByTagName('input');
