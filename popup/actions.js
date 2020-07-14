@@ -30,8 +30,15 @@ function sendOptions() {
 }
 
 function updateCounter(number) {
-	document.getElementById('number').innerHTML = number;
+	if (number != undefined) {
+		browser.storage.local.set({ counter: number });
+	}
+	browser.storage.local.get('counter').then((data) => {
+		document.getElementById('number').innerHTML = data.counter;
+	});
 }
+
+document.onload = updateCounter();
 
 document.addEventListener('click', () => {
 	let radios = document.getElementsByTagName('input');
