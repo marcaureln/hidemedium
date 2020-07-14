@@ -63,11 +63,13 @@ function showArticles(articles) {
 document.body.onload = function () {
 	counter += blurArticles(getStarredArticles(getArticles()));
 	// counter += hideArticles(getStarredArticles(getArticles()));
+	browser.runtime.sendMessage({ number: counter });
 	console.log(counter, ' now !');
 };
 
 document.body.onscroll = function () {
 	counter += blurArticles(getStarredArticles(getArticles()));
 	// counter += hideArticles(getStarredArticles(getArticles()));
+	browser.runtime.sendMessage({ number: counter });
 	console.log(counter, ' now !');
 };

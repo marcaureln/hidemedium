@@ -1,7 +1,5 @@
 'use strict';
 
-// document.getElementById('number').innerHTML = 0;
-
 let Options = {
 	show: true,
 	hide: false,
@@ -31,6 +29,10 @@ function sendOptions() {
 	};
 }
 
+function updateCounter(number) {
+	document.getElementById('number').innerHTML = number;
+}
+
 document.addEventListener('click', () => {
 	let radios = document.getElementsByTagName('input');
 	for (let i = 0; i < radios.length; i++) {
@@ -50,4 +52,8 @@ document.addEventListener('click', () => {
 			break;
 		}
 	}
+});
+
+browser.runtime.onMessage.addListener((response) => {
+	updateCounter(response.number);
 });
