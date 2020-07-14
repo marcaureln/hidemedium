@@ -2,22 +2,34 @@
 
 // document.getElementById('number').innerHTML = 0;
 
-let options = {
-	hide: true,
+let Options = {
+	show: true,
+	hide: false,
 	blur: false,
-	disableAll: () => {
-		options.hide = false;
-		options.blur = false;
+	setShow: () => {
+		Options.show = true;
+		Options.hide = false;
+		Options.blur = false;
 	},
 	setHide: () => {
-		options.hide = true;
-		options.blur = false;
+		Options.show = false;
+		Options.hide = true;
+		Options.blur = false;
 	},
 	setBlur: () => {
-		options.blur = true;
-		options.hide = false;
+		Options.show = false;
+		Options.hide = false;
+		Options.blur = true;
 	},
 };
+
+function sendOptions() {
+	return {
+		show: Options.show,
+		hide: Options.hide,
+		blur: Options.blur,
+	};
+}
 
 document.addEventListener('click', () => {
 	let radios = document.getElementsByTagName('input');
@@ -26,13 +38,13 @@ document.addEventListener('click', () => {
 		if (element.checked) {
 			switch (element.value) {
 				case 'show':
-					options.disableAll();
+					Options.setShow();
 					break;
 				case 'hide':
-					options.setHide();
+					Options.setHide();
 					break;
 				case 'blur':
-					options.setBlur();
+					Options.setBlur();
 					break;
 			}
 			break;
