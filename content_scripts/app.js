@@ -1,20 +1,15 @@
 'use strict';
 
-let hiden = 0;
-let starredArticles = [];
+let counter = 0;
 
 function getArticles() {
 	return document.querySelectorAll('article');
 }
 
-function getStarredArticles() {
-	let articles = getArticles();
+function getStarredArticles(articles) {
 	let starredArticles = [];
 	for (let i = 0; i < articles.length; i++) {
-		if (
-			articles[i].getElementsByClassName('svgIcon--star').length != 0 &&
-			!articles[i].style.display.includes('none')
-		) {
+		if (articles[i].getElementsByClassName('svgIcon--star').length != 0) {
 			starredArticles.push(articles[i]);
 		}
 	}
@@ -26,18 +21,19 @@ function hideArticles(articles) {
 		return 0;
 	}
 
-	let count = 0;
+	let counter = 0;
 	for (let i = 0; i < articles.length; i++) {
-		if (articles[i].style.display.includes('!important')) {
-			articles[i].style.display = 'none !important';
-		} else {
-			articles[i].style.display = 'none';
+		// Do not process been processed articles
+		if (!articles[i].style.display.includes('none')) {
+			if (articles[i].style.display.includes('!important')) {
+				articles[i].style.display = 'none !important';
+			} else {
+				articles[i].style.display = 'none';
+			}
+			counter++;
 		}
-		starredArticles.push(articles[i]);
-		count++;
 	}
-	console.log('+', count, ' now !');
-	return count;
+	return counter;
 }
 
 function blurArticles(articles) {
@@ -45,17 +41,15 @@ function blurArticles(articles) {
 		return 0;
 	}
 
-	let count = 0;
+	let counter = 0;
 	for (let i = 0; i < articles.length; i++) {
-		articles[i].style.filter = 'blur(1.5rem)';
-		starredArticles.push(articles[i]);
-		count++;
+		if (articles[i].style.filter != 'blur(1.5rem)') {
+			articles[i].style.filter = 'blur(1.5rem)';
+			counter++;
+		}
 	}
-	console.log('+', count, ' now !');
-	return count;
+	return counter;
 }
-
-function updateCounter() {}
 
 function showArticles(articles) {
 	// Remove effects on each articles
@@ -67,9 +61,13 @@ function showArticles(articles) {
 }
 
 document.body.onload = function () {
-	hiden += hideArticles(getStarredArticles());
+	counter += blurArticles(getStarredArticles(getArticles()));
+	// counter += hideArticles(getStarredArticles(getArticles()));
+	console.log(counter, ' now !');
 };
 
 document.body.onscroll = function () {
-	hiden += hideArticles(getStarredArticles());
+	counter += blurArticles(getStarredArticles(getArticles()));
+	// counter += hideArticles(getStarredArticles(getArticles()));
+	console.log(counter, ' now !');
 };
