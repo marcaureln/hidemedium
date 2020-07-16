@@ -34,7 +34,12 @@ function updateCounter(number) {
 		browser.storage.local.set({ counter: number });
 	}
 	browser.storage.local.get('counter').then((data) => {
-		document.getElementById('number').innerHTML = data.counter;
+		let counter = data.counter;
+		if (counter == undefined) {
+			document.getElementById('number').innerHTML = 0;
+		} else {
+			document.getElementById('number').innerHTML = counter;
+		}
 	});
 }
 
