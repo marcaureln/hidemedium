@@ -1,9 +1,11 @@
 'use strict';
 
+updateCounter();
+
 let Options = {
-	show: true,
+	show: false,
 	hide: false,
-	blur: false,
+	blur: true,
 	setShow: () => {
 		Options.show = true;
 		Options.hide = false;
@@ -22,17 +24,15 @@ let Options = {
 };
 
 function getOptions() {
-	return {
+	let options = {
 		show: Options.show,
 		hide: Options.hide,
 		blur: Options.blur,
 	};
+	return options;
 }
 
 function updateCounter(number) {
-	if (number != undefined) {
-		browser.storage.local.set({ counter: number });
-	}
 	browser.storage.local.get('counter').then((data) => {
 		let counter = data.counter;
 		if (counter == undefined) {
@@ -43,7 +43,9 @@ function updateCounter(number) {
 	});
 }
 
-document.onload = updateCounter();
+function setCounter(number) {
+	browser.storage.local.set({ counter: number });
+}
 
 document.addEventListener('click', () => {
 	let radios = document.getElementsByTagName('input');
@@ -67,5 +69,6 @@ document.addEventListener('click', () => {
 });
 
 browser.runtime.onMessage.addListener((response) => {
-	updateCounter(response.number);
+	setCounter(response.number);
+	updateCounter();
 });
