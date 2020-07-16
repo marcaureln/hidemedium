@@ -2,36 +2,6 @@
 
 updateCounter();
 
-let Options = {
-	show: false,
-	hide: false,
-	blur: true,
-	setShow: () => {
-		Options.show = true;
-		Options.hide = false;
-		Options.blur = false;
-	},
-	setHide: () => {
-		Options.show = false;
-		Options.hide = true;
-		Options.blur = false;
-	},
-	setBlur: () => {
-		Options.show = false;
-		Options.hide = false;
-		Options.blur = true;
-	},
-};
-
-function getOptions() {
-	let options = {
-		show: Options.show,
-		hide: Options.hide,
-		blur: Options.blur,
-	};
-	return options;
-}
-
 function updateCounter(number) {
 	browser.storage.local.get('counter').then((data) => {
 		let counter = data.counter;
@@ -54,13 +24,10 @@ document.addEventListener('click', () => {
 		if (radio.checked) {
 			switch (radio.value) {
 				case 'show':
-					Options.setShow();
 					break;
 				case 'hide':
-					Options.setHide();
 					break;
 				case 'blur':
-					Options.setBlur();
 					break;
 			}
 			break;

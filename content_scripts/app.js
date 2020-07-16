@@ -2,6 +2,45 @@
 
 let counter = 0;
 
+let Options = {
+	show: false,
+	hide: false,
+	blur: true,
+	setShow: () => {
+		Options.show = true;
+		Options.hide = false;
+		Options.blur = false;
+	},
+	setHide: () => {
+		Options.show = false;
+		Options.hide = true;
+		Options.blur = false;
+	},
+	setBlur: () => {
+		Options.show = false;
+		Options.hide = false;
+		Options.blur = true;
+	},
+	getOptions: () => {
+		let options = {
+			show: Options.show,
+			hide: Options.hide,
+			blur: Options.blur,
+		};
+		return options;
+	},
+};
+
+function applyOptions(options) {
+	if (options.show) {
+		return showArticles(StarredArticles(getArticles()));
+	} else if (options.hide) {
+		return hideArticles(getStarredArticles(getArticles()));
+	} else if (options.blur) {
+		return blurArticles(getStarredArticles(getArticles()));
+	}
+}
+
 function getArticles() {
 	return document.querySelectorAll('article');
 }
@@ -57,19 +96,17 @@ function showArticles(articles) {
 		articles[i].style.filter = '';
 		articles[i].style.display = '';
 	}
-	return [];
+	return 0;
 }
 
 document.body.onload = function () {
-	counter += blurArticles(getStarredArticles(getArticles()));
-	// counter += hideArticles(getStarredArticles(getArticles()));
+	counter += applyOptions(Options.getOptions());
 	browser.runtime.sendMessage({ number: counter });
 	console.log(counter, ' now !');
 };
 
 document.body.onscroll = function () {
-	counter += blurArticles(getStarredArticles(getArticles()));
-	// counter += hideArticles(getStarredArticles(getArticles()));
+	counter += applyOptions(Options.getOptions());
 	browser.runtime.sendMessage({ number: counter });
 	console.log(counter, ' now !');
 };
