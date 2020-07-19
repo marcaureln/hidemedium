@@ -42,7 +42,7 @@ function applyOptions(options) {
 }
 
 function getArticles() {
-	return document.querySelectorAll('article');
+	return document.querySelectorAll('article, li');
 }
 
 function getStarredArticles(articles) {
