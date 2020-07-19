@@ -3,23 +3,25 @@
 html,
 body {
 	margin: 0;
-	width: 200px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	box-sizing: border-box;
 }
 
 body {
+	font-family: 'Fira Sans', sans-serif;
+	width: 200px;
 	padding: 20px;
 	padding-bottom: 0;
-	border-top: 0.8rem solid coral;
+	border-top: 0.8rem solid #3d5af1;
 }
 
 .counter {
 	width: 120px;
 	padding: 4px;
 	margin-bottom: 20px;
-	background-color: #dcdcdc;
+	background-color: #e2f3f5;
 	border-radius: 0.8rem;
 	align-self: center;
 	display: flex;
@@ -28,7 +30,8 @@ body {
 
 #number {
 	margin: 0;
-	font: 2.2rem 'Fira Sans', sans-serif;
+	font-size: 2.2em;
+	color: #0e153a;
 }
 
 .container {
@@ -37,12 +40,7 @@ body {
 
 p,
 label {
-	font: 1rem 'Fira Sans', sans-serif;
-}
-
-.ps {
-	margin: 0;
-	font-size: 0.8rem;
+	font-size: 1em;
 }
 
 footer {
@@ -50,7 +48,7 @@ footer {
 	width: 100%;
 	margin-top: 10px;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
 }
 
