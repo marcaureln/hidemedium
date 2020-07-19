@@ -4,8 +4,8 @@ let counter = 0;
 
 let Options = {
 	show: false,
-	hide: false,
-	blur: true,
+	hide: true,
+	blur: false,
 	setShow: () => {
 		Options.show = true;
 		Options.hide = false;
@@ -64,7 +64,7 @@ function hideArticles(articles) {
 	for (let i = 0; i < articles.length; i++) {
 		// Do not process been processed articles
 		if (!articles[i].style.display.includes('none')) {
-			if (articles[i].style.display.includes('!important')) {
+			if (articles[i].style.display.includes('important')) {
 				articles[i].style.display = 'none !important';
 			} else {
 				articles[i].style.display = 'none';
