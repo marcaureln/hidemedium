@@ -1,45 +1,6 @@
 'use strict';
 
-let counter = 0;
-
-let Options = {
-	show: false,
-	hide: true,
-	blur: false,
-	setShow: () => {
-		Options.show = true;
-		Options.hide = false;
-		Options.blur = false;
-	},
-	setHide: () => {
-		Options.show = false;
-		Options.hide = true;
-		Options.blur = false;
-	},
-	setBlur: () => {
-		Options.show = false;
-		Options.hide = false;
-		Options.blur = true;
-	},
-	getOptions: () => {
-		let options = {
-			show: Options.show,
-			hide: Options.hide,
-			blur: Options.blur,
-		};
-		return options;
-	},
-};
-
-function applyOptions(options) {
-	if (options.show) {
-		return showArticles(StarredArticles(getArticles()));
-	} else if (options.hide) {
-		return hideArticles(getStarredArticles(getArticles()));
-	} else if (options.blur) {
-		return blurArticles(getStarredArticles(getArticles()));
-	}
-}
+// let counter = 0;
 
 function getArticles() {
 	return document.querySelectorAll('article, li');
@@ -98,15 +59,3 @@ function showArticles(articles) {
 	}
 	return 0;
 }
-
-document.body.onload = function () {
-	counter += applyOptions(Options.getOptions());
-	browser.runtime.sendMessage({ number: counter });
-	console.log(counter, ' now !');
-};
-
-document.body.onscroll = function () {
-	counter += applyOptions(Options.getOptions());
-	browser.runtime.sendMessage({ number: counter });
-	console.log(counter, ' now !');
-};

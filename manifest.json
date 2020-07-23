@@ -8,7 +8,7 @@
 		"48": "icons/icon.svg",
 		"96": "icons/icon.svg"
 	},
-	"permissions": ["activeTab", "storage"],
+	"permissions": ["activeTab"],
 	"page_action": {
 		"browser_style": true,
 		"default_icon": {
@@ -21,7 +21,10 @@
 	"content_scripts": [
 		{
 			"matches": ["*://*.medium.com/*"],
-			"js": ["content_scripts/app.js"]
+			"js": ["content_scripts/hide.js"]
 		}
-	]
+	],
+	"background": {
+		"scripts": ["app.js"]
+	}
 }
