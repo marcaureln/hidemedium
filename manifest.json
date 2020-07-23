@@ -15,8 +15,7 @@
 			"19": "icons/icon.svg",
 			"38": "icons/icon.svg"
 		},
-		"default_title": "Hide Medium",
-		"default_popup": "popup/index.html",
+		"default_title": "Show/Hide ⭐ articles on Medium",
 		"show_matches": ["*://*.medium.com/*"]
 	},
 	"content_scripts": [
