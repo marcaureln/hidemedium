@@ -20,8 +20,10 @@ function showArticles(articles) {
 		articles[i].style.filter = '';
 		articles[i].style.display = '';
 	}
-	return 0;
+	// return 0;
 }
 
 showArticles(getArticles());
 document.body.onscroll = () => {};
+
+undefined;
