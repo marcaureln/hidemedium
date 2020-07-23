@@ -3,16 +3,21 @@
 	"name": "Hide Medium",
 	"version": "0.1",
 	"description": "Hides starred articles on Medium.",
-	"homepage_url": "https://github.com/marcaureln/",
+	"homepage_url": "https://github.com/marcaureln/hidemedium",
 	"icons": {
 		"48": "icons/icon.svg",
 		"96": "icons/icon.svg"
 	},
 	"permissions": ["activeTab", "storage"],
-	"browser_action": {
-		"default_icon": "icons/icon.svg",
+	"page_action": {
+		"browser_style": true,
+		"default_icon": {
+			"19": "icons/icon.svg",
+			"38": "icons/icon.svg"
+		},
 		"default_title": "Hide Medium",
-		"default_popup": "popup/index.html"
+		"default_popup": "popup/index.html",
+		"show_matches": ["*://*.medium.com/*"]
 	},
 	"content_scripts": [
 		{
