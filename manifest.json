@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 	"name": "Hide Medium",
-	"version": "0.1",
-	"description": "Hides starred articles on Medium.",
+	"version": "0.2",
+	"description": "Hides starred articles in your Medium's home page.",
 	"homepage_url": "https://github.com/marcaureln/hidemedium",
 	"icons": {
 		"48": "icons/icon.svg",
@@ -16,11 +16,11 @@
 			"38": "icons/icon.svg"
 		},
 		"default_title": "Show/Hide ⭐ articles on Medium",
-		"show_matches": ["*://*.medium.com/*"]
+		"show_matches": ["*://*.medium.com/"]
 	},
 	"content_scripts": [
 		{
-			"matches": ["*://*.medium.com/*"],
+			"matches": ["*://*.medium.com/"],
 			"js": ["content_scripts/hide.js"]
 		}
 	],
