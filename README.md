@@ -1,5 +1,7 @@
 # Hide Medium
 
+**The extension is no more working because of Medium has changed their home page design.**
+
 Hide Medium is an extension that hides starred articles on [Medium](https://medium.com/) to keep you focused and avoid frustration.
 
 *If you found any bug or if you have any suggestion, feel free to report, suggest me or even fix it yourself (see contributing) ;)*
